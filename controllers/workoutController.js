@@ -10,6 +10,17 @@ const get = (req, res) => {
     });
 };
 
+const getRange = (req, res) => {
+    db.Workout.find({}).limit(7)
+      .then(dbWorkouts => {
+        console.log(dbWorkouts)
+        res.json(dbWorkouts);
+      })
+      .catch(err => {
+        res.json(err);
+      });
+  }
+
 const create = (req, res) => {
   db.Workout.create({})
     .then((dbWorkout) => {
@@ -20,7 +31,6 @@ const create = (req, res) => {
     });
 };
 
-// destructured version of: const update = (req, res)
 const update = (req, res) => {
   db.Workout.findByIdAndUpdate(
     req.params.id,
@@ -38,6 +48,7 @@ const update = (req, res) => {
 
 module.exports = {
   get,
+  getRange,
   create,
   update,
 };
