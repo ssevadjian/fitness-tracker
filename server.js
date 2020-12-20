@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
+const routes = require('./routes')
 
 const PORT = 3000;
 
@@ -14,15 +15,21 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
+// routes
+app.use(routes);
+// app.use(require("./routes/api.js"));
+// app.use(require("./routes/view.js"));
+
 mongoose.connect(process.env.MONGODB_URI, {
+  useCreateIndex: true,
   useNewUrlParser: true,
-  useFindAndModify: false,
+  useFindAndModify: true,
   useUnifiedTopology: true,
 });
 
-// routes
-app.use(require("./routes/api.js"));
-app.use(require("./routes/view.js"));
+// // routes
+// app.use(require("./routes/api.js"));
+// app.use(require("./routes/view.js"));
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
