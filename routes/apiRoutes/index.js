@@ -9,6 +9,6 @@ router.route('/exercise')
 
 router.get('/workouts/range', workoutController.getRange)
 
-// router.put('/exercise/:id', workoutController.update)
+router.put('/exercise/:id', workoutController.update)
 
 module.exports = router

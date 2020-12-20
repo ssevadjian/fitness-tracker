@@ -11,15 +11,16 @@ const get = (req, res) => {
 };
 
 const getRange = (req, res) => {
-    db.Workout.find({}).limit(7)
-      .then(dbWorkouts => {
-        console.log(dbWorkouts)
-        res.json(dbWorkouts);
-      })
-      .catch(err => {
-        res.json(err);
-      });
-  }
+  db.Workout.find({})
+    .limit(7)
+    .then((dbWorkouts) => {
+      console.log(dbWorkouts);
+      res.json(dbWorkouts);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+};
 
 const create = (req, res) => {
   db.Workout.create({})
@@ -31,10 +32,10 @@ const create = (req, res) => {
     });
 };
 
-const update = (req, res) => {
-  db.Workout.findByIdAndUpdate(
-    req.params.id,
-    { $push: { exercises: req.body } },
+const update = ({ body, params }, res) => {
+  Workout.findByIdAndUpdate(
+    params.id,
+    { $push: { exercises: body } },
     // "runValidators" will ensure new exercises meet our schema requirements
     { new: true, runValidators: true }
   )
