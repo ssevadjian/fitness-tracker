@@ -11,6 +11,9 @@ Users can also click 'Dashboard' at the top of the page to view their stats.
 ## Screenshots
 
 ![FThome](./assets/FThome.png)
+![FTContinue](./assets/FTContinue.png)
+![FTadd](./assets/FTadd.png)
+![FTdash](./assets/FTdash.png)
 
 ## Link to deployed Heroku page
 
