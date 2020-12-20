@@ -17,7 +17,6 @@ app.use(express.static('public'));
 
 // routes
 app.use(routes);
-// app.use(require("./routes/api.js"));
 app.use(require("./routes/view.js"));
 
 mongoose.connect(process.env.MONGODB_URI, {
